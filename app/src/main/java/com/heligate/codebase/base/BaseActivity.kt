@@ -6,7 +6,6 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
 import android.support.v7.app.AlertDialog
 import android.view.inputmethod.InputMethodManager
 import butterknife.ButterKnife
@@ -71,9 +70,9 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : DaggerAppC
     }
 
 
-    protected fun showAlertDialog(@StringRes messageId: Int) {
+    protected fun showAlertDialog(message: String) {
         val builder = AlertDialog.Builder(this)
-        builder.setMessage(messageId)
+        builder.setMessage(message)
             .setTitle(R.string.app_name)
             .setPositiveButton(R.string.button_ok) { dialog, which ->
 
