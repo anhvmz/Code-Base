@@ -3,6 +3,7 @@ package com.heligate.codebase.api
 import android.content.Context
 import android.util.Log
 import com.heligate.codebase.BuildConfig
+import com.heligate.codebase.api.main.MainApiService
 import com.heligate.codebase.di.module.ViewModelModule
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -23,7 +24,7 @@ import javax.inject.Singleton
 
 @Module(includes = [ViewModelModule::class])
 class ApiModule {
-    private val BASE_URL = "http://dummy.restapiexample.com"
+    private val BASE_URL = "https://www.acbc2.com"
     private val cacheSize: Long = 10 * 1024 * 1024
     private val cacheTimeSec = 30
     private val timeout: Long = 60
@@ -89,4 +90,11 @@ class ApiModule {
             .readTimeout(timeout, TimeUnit.SECONDS)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideMainApiService(restAdapter: Retrofit): MainApiService {
+        return restAdapter.create(MainApiService::class.java)
+    }
+
 }

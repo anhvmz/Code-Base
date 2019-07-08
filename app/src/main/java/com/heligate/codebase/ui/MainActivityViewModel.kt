@@ -15,4 +15,11 @@ class MainActivityViewModel @Inject constructor() : BaseViewModel() {
     init {
         txtValue.value = "1"
     }
+
+    fun getData() {
+        setIsLoading(true)
+//        addCompositeDisposable(mainRepository.getData())
+    }
+
+
 }

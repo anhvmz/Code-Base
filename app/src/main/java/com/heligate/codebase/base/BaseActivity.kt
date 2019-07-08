@@ -9,10 +9,12 @@ import android.support.annotation.LayoutRes
 import android.support.v7.app.AlertDialog
 import android.view.inputmethod.InputMethodManager
 import butterknife.ButterKnife
+import butterknife.Unbinder
 import com.heligate.codebase.R
 import dagger.android.support.DaggerAppCompatActivity
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : DaggerAppCompatActivity() {
+    private var unbinder: Unbinder? = null
 
     var viewDataBinding: T? = null
         private set
@@ -36,7 +38,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : DaggerAppC
         this.mViewModel = viewModel
         this.mViewModel?.onViewCreated()
         performDataBinding()
-        ButterKnife.bind(this)
+        unbinder = ButterKnife.bind(this)
     }
 
     /**
@@ -60,6 +62,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : DaggerAppC
 
     override fun onDestroy() {
         this.mViewModel!!.onDestroyView()
+        if (unbinder != null) {
+            unbinder!!.unbind()
+            unbinder = null
+        }
         super.onDestroy()
     }
 

@@ -1,6 +1,6 @@
 package com.heligate.codebase.repository
 
-import com.heligate.codebase.api.ApiService
+import com.heligate.codebase.api.main.MainApiService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,7 +10,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideStoreRepository(apiService: ApiService): MainRepository {
-        return MainRepository(apiService)
+    fun provideMainRepository(mainApiService: MainApiService): MainRepository {
+        return MainRepository(mainApiService)
     }
 }
