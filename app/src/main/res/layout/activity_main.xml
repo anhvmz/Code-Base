@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
                 name="viewModel"
                 type="com.heligate.codebase.ui.MainActivityViewModel"/>
@@ -16,6 +19,7 @@
                 android:layout_width="match_parent"
                 android:text="@{viewModel.txtValue}"
                 android:gravity="center"
+                app:orderStatus="@{viewModel.txtcolor}"
                 android:layout_height="match_parent"/>
 
     </android.support.constraint.ConstraintLayout>

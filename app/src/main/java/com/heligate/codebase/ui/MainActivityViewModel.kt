@@ -11,9 +11,11 @@ class MainActivityViewModel @Inject constructor() : BaseViewModel() {
     lateinit var mainRepository: MainRepository
 
     var txtValue = MutableLiveData<String>()
+    var txtcolor = MutableLiveData<String>()
 
     init {
         txtValue.value = "1"
+        txtcolor.value = "1"
     }
 
     fun getData() {
